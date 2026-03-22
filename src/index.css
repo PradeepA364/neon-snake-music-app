@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Anton", sans-serif;
+  
+  --color-neon-green: #00FF00;
+  --color-brutal-black: #000000;
+  --color-hardware-gray: #151619;
+  --color-hardware-light: #E6E6E6;
+  --color-ink: #141414;
+
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-scan: scan 2s linear infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes scan {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(500%); }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#E6E6E6] text-zinc-900 antialiased overflow-x-hidden;
+  }
+}
+
+@layer components {
+  /* Recipe 3: Hardware Widget */
+  .hardware-card {
+    @apply bg-[#151619] text-white rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.15)] border border-black;
+  }
+
+  .radial-track {
+    @apply border border-dashed border-zinc-600 rounded-full;
+  }
+
+  /* Recipe 5: Brutalist Elements */
+  .brutal-border {
+    @apply border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .big-number {
+    @apply font-mono font-black leading-none tracking-tighter;
+  }
+
+  .marquee-track {
+    @apply flex whitespace-nowrap animate-marquee;
+  }
+
+  .status-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500;
+  }
+}
+
+/* Recipe 1: Data Row */
+.data-row {
+  @apply flex items-center justify-between p-3 border-b border-black/10 transition-colors cursor-pointer hover:bg-black hover:text-white;
+}
